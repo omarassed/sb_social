@@ -19,11 +19,11 @@ public class SocialController {
 
     @GetMapping("/social/users")
     public ResponseEntity<List<SocialUser>> getUsers() {
-        return new ResponseEntity<>(socialService.getAllUsers(), HttpStatus.OK)
+        return new ResponseEntity<>(socialService.getAllUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/social/users")
     public ResponseEntity<SocialUser> saveUser(@RequestBody SocialUser socialUser) {
-        return new ResponseEntity<>(socialService.saveUsers(), HttpStatus.CREATED)
+        return new ResponseEntity<>(socialService.saveUsers(socialUser), HttpStatus.CREATED);
     }
 }

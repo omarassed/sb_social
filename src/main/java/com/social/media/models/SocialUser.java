@@ -1,11 +1,15 @@
 package com.social.media.models;
 import jakarta.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.util.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class SocialUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +28,9 @@ public class SocialUser {
             inverseJoinColumns = @JoinColumn(name = "group_id")
     )
     private Set<SocialGroup> groups = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
